@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Foot-X</string>
+    <string name="title_home">Home</string>
+    <string name="title_recherche">Recherche</string>
+    <string name="title_profil">Profil</string>
+    <string name="ville">Ville</string>
+    <string name="go">Go</string>
+</resources>
