@@ -5,4 +5,12 @@
     <string name="title_profil">Profil</string>
     <string name="ville">Ville</string>
     <string name="go">Go</string>
+
+    <string-array name="planets_array">
+        <item>Ligue 1</item>
+        <item>Premier League</item>
+        <item>Liga</item>
+        <item>Bundesliga</item>
+        <item>Serie A</item>
+    </string-array>
 </resources>

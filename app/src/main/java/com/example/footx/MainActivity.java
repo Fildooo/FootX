@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
         String response = "";
         try {
             HttpURLConnection connection = null;
-            URL url = new URL("https://v3.football.api-sports.io/fixtures?league=61&season=2021&team="+ URLEncoder.encode(ville,"utf-8"));
+            URL url = new URL("https://v3.football.api-sports.io/fixtures?league=1&season=2018&team="+ URLEncoder.encode(ville,"utf-8"));
             connection = (HttpsURLConnection) url.openConnection();
             connection.setDoOutput(true);
             connection.addRequestProperty("x-apisports-key", "fb0f3952c194ffdfeb0fcdd8ba320399");
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String decodeJSON(JSONObject jso) throws Exception {
         String response = "";
-            JSONObject jsostatuts = jso.getJSONObject("status");
+            JSONObject jsostatuts = jso.getJSONObject("home");
             JSONObject jsototalresults = jso.getJSONObject("totalResults");
             JSONArray jsoarticles = jso.getJSONArray("articles");
             response = "\n  " + jso.getString("category");
