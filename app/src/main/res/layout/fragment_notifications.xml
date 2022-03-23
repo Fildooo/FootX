@@ -13,16 +13,20 @@
       android:text="@string/Question"
       android:id="@+id/question"
   />
-  <EditText
+
+  <AutoCompleteTextView
+      android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_width="match_parent"
-      android:id="@+id/EditQuest"
-      />
+      android:id="@+id/editText1"
+      android:ems="10"
+      android:imeOptions="actionSearch"
+      android:inputType="textAutoComplete|textAutoCorrect"
+    />
   <Button
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:id="@+id/buttonQuestion"
       android:text="@string/ButtonQuestion"
-      android:onClick="getValue"
-    />
+      android:onClick="Value"
+      />
 </LinearLayout>

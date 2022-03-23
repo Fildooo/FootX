@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.LinearLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView tResultat;
     private EditText editVille;
     private Button bGo;
-
+    private Button buttonQuestion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         tResultat = findViewById(R.id.tResultat);
         editVille = findViewById(R.id.editVille);
         bGo = findViewById(R.id.bGo);
+        buttonQuestion = findViewById(R.id.buttonQuestion);
 
 
 
@@ -77,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
             traitement(editVille.getText().toString());
         }
     }
+
 
     private class RequestTask extends AsyncTask<String, Void, String> {
         // Le corps de la tâche asynchrone (exécuté en tâche de fond)
