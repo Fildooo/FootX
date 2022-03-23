@@ -5,7 +5,8 @@
     <string name="title_profil">Profil</string>
     <string name="ville">Ville</string>
     <string name="go">Go</string>
-
+    <string name="Question">Choisissez une équipe </string>
+    <string name="ButtonQuestion">Valider</string>
     <string-array name="classement_array">
         <item>Ligue 1</item>
         <item>Premier League</item>

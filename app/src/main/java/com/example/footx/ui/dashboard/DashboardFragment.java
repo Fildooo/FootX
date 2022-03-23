@@ -49,6 +49,7 @@ public class DashboardFragment extends Fragment {
     private FragmentDashboardBinding binding;
 
     TextView tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9, tv10;
+    TextView v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11;
     ImageView iv1;
 
 
@@ -119,7 +120,7 @@ public class DashboardFragment extends Fragment {
             }else if (parentView.getPositionForView(selectedItemView) == 3) {
                   //  traitement("135");
                     try {
-                        str =  traitement("135");
+                        str =  traitement("78");
                     } catch (ExecutionException | InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -133,7 +134,7 @@ public class DashboardFragment extends Fragment {
             }else if (parentView.getPositionForView(selectedItemView) == 4) {
                   //  traitement("78");
                     try {
-                        str = traitement("78");
+                        str = traitement("135");
                     } catch (ExecutionException | InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -171,6 +172,7 @@ public class DashboardFragment extends Fragment {
 
             TableLayout table = (TableLayout) root.findViewById(R.id.idTable);
             TableRow row;
+
             // Decode
             JSONObject obj = new JSONObject(str);
             JSONArray infosLeague = obj.getJSONArray("response");
@@ -184,6 +186,124 @@ public class DashboardFragment extends Fragment {
             View child = table.getChildAt(f);
             if(child instanceof TableRow) ((ViewGroup) child).removeAllViews();
         }
+
+        row = new TableRow(getActivity().getBaseContext());
+
+        row.setPadding(0, 0, 0, 100);
+        v1 = new TextView(getActivity().getBaseContext());
+        v1.setText("");
+        v1.setGravity(Gravity.CENTER);
+        v1.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.WRAP_CONTENT, 1));
+
+        if (v1.getParent() != null) {
+            ((ViewGroup) v1.getParent()).removeView(v1); // <- fix
+        }
+        row.addView(v1);
+
+        v2 = new TextView(getActivity().getBaseContext());
+        v2.setText("");
+        v2.setGravity(Gravity.CENTER);
+        v2.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.WRAP_CONTENT, 1));
+
+        if (v2.getParent() != null) {
+            ((ViewGroup) v2.getParent()).removeView(v2); // <- fix
+        }
+        row.addView(v2);
+
+        v3 = new TextView(getActivity().getBaseContext());
+        v3.setText("");
+        v3.setGravity(Gravity.CENTER);
+        v3.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.WRAP_CONTENT, 1));
+
+        if (v3.getParent() != null) {
+            ((ViewGroup) v3.getParent()).removeView(v3); // <- fix
+        }
+        row.addView(v3);
+
+        v4 = new TextView(getActivity().getBaseContext());
+        v4.setText("MJ");
+        v4.setGravity(Gravity.CENTER);
+        v4.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.WRAP_CONTENT, 1));
+
+        if (v4.getParent() != null) {
+            ((ViewGroup) v4.getParent()).removeView(v4); // <- fix
+        }
+        row.addView(v4);
+
+        v5 = new TextView(getActivity().getBaseContext());
+        v5.setText("G");
+        v5.setGravity(Gravity.CENTER);
+        v5.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.WRAP_CONTENT, 1));
+
+        if (v5.getParent() != null) {
+            ((ViewGroup) v5.getParent()).removeView(v5); // <- fix
+        }
+        row.addView(v5);
+
+        v6 = new TextView(getActivity().getBaseContext());
+        v6.setText("N");
+        v6.setGravity(Gravity.CENTER);
+        v6.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.WRAP_CONTENT, 1));
+
+        if (v6.getParent() != null) {
+            ((ViewGroup) v6.getParent()).removeView(v6); // <- fix
+        }
+        row.addView(v6);
+
+        v7 = new TextView(getActivity().getBaseContext());
+        v7.setText("P");
+        v7.setGravity(Gravity.CENTER);
+        v7.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.WRAP_CONTENT, 1));
+
+        if (v7.getParent() != null) {
+            ((ViewGroup) v7.getParent()).removeView(v7); // <- fix
+        }
+        row.addView(v7);
+
+        v8 = new TextView(getActivity().getBaseContext());
+        v8.setText("BP");
+        v8.setGravity(Gravity.CENTER);
+        v8.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.WRAP_CONTENT, 1));
+
+        if (v8.getParent() != null) {
+            ((ViewGroup) v8.getParent()).removeView(v8); // <- fix
+        }
+        row.addView(v8);
+
+        v9 = new TextView(getActivity().getBaseContext());
+        v9.setText("BC");
+        v9.setGravity(Gravity.CENTER);
+        v9.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.WRAP_CONTENT, 1));
+
+        if (v9.getParent() != null) {
+            ((ViewGroup) v9.getParent()).removeView(v9); // <- fix
+        }
+        row.addView(v9);
+
+        v10 = new TextView(getActivity().getBaseContext());
+        v10.setText("DB");
+        v10.setGravity(Gravity.CENTER);
+        v10.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.WRAP_CONTENT, 1));
+
+        if (v10.getParent() != null) {
+            ((ViewGroup) v10.getParent()).removeView(v10); // <- fix
+        }
+        row.addView(v10);
+
+        v11 = new TextView(getActivity().getBaseContext());
+        v11.setText("Pts");
+        v11.setGravity(Gravity.CENTER);
+        v11.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.WRAP_CONTENT, 1));
+
+        if (v11.getParent() != null) {
+            ((ViewGroup) v11.getParent()).removeView(v11); // <- fix
+        }
+        row.addView(v11);
+
+
+
+
+        table.addView(row);
 
         for (int i = 0; i < step4.length(); i++) {
                 JSONObject step5 = step4.getJSONObject(i);
@@ -233,6 +353,7 @@ public class DashboardFragment extends Fragment {
 
 
                 row = new TableRow(getActivity().getBaseContext());
+            row.setPadding(0, 0, 0, 50);
 
                 tv1 = new TextView(getActivity().getBaseContext());
                 tv1.setText(col1);
@@ -245,6 +366,7 @@ public class DashboardFragment extends Fragment {
 
                 tv2 = new TextView(getActivity().getBaseContext());
                 tv2.setText(col2);
+                tv2.setSingleLine();
                 tv2.setGravity(Gravity.CENTER);
                 tv2.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.WRAP_CONTENT, 1));
 
@@ -336,6 +458,8 @@ public class DashboardFragment extends Fragment {
                 if (row.getParent() != null) {
                     ((ViewGroup) row.getParent()).removeView(row);
                 }
+
+
                 table.addView(row);
 
             }

@@ -10,7 +10,7 @@ public class NotificationsViewModel extends ViewModel {
 
     public NotificationsViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("SpeedNews paramètres");
+        mText.setValue("");
     }
 
     public LiveData<String> getText() {

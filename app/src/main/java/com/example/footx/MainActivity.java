@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText editVille;
     private Button bGo;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -123,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return response;
     }
+
 
 
     private String decodeJSON(JSONObject jso) throws Exception {
