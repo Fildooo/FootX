@@ -14,6 +14,9 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.footx.databinding.FragmentNotificationsBinding;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class NotificationsFragment extends Fragment {
 
     private NotificationsViewModel notificationsViewModel;
@@ -27,13 +30,10 @@ public class NotificationsFragment extends Fragment {
         binding = FragmentNotificationsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textNotifications;
-        notificationsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String date = sdf.format(new Date());
+
+        System.out.println(date);
         return root;
     }
 
