@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,15 +15,16 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.footx.R;
 import com.example.footx.databinding.FragmentNotificationsBinding;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class NotificationsFragment extends Fragment {
 
     private NotificationsViewModel notificationsViewModel;
     private FragmentNotificationsBinding binding;
+    private EditText EditQuest;
+    private Button buttonQuestion;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -30,12 +34,16 @@ public class NotificationsFragment extends Fragment {
         binding = FragmentNotificationsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String date = sdf.format(new Date());
+        buttonQuestion = (Button) root.findViewById(R.id.buttonQuestion);
+        EditQuest = (EditText) root.findViewById(R.id.EditQuest);
 
-        System.out.println(date);
+
+
+
         return root;
     }
+
+
 
     @Override
     public void onDestroyView() {
