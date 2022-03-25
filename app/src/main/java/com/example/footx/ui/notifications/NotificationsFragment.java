@@ -3,30 +3,20 @@ package com.example.footx.ui.notifications;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.Spinner;
-import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.footx.R;
 import com.example.footx.databinding.FragmentNotificationsBinding;
 import com.example.footx.ui.dashboard.DashboardFragment;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,7 +30,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.concurrent.ExecutionException;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -52,6 +41,7 @@ public class NotificationsFragment extends Fragment {
     private FragmentNotificationsBinding binding;
     private AutoCompleteTextView editQuest;
     private ArrayList<String> Team ;
+    private ArrayList<Integer> TeamID;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -66,6 +56,8 @@ public class NotificationsFragment extends Fragment {
         Button button = (Button) root.findViewById(R.id.buttonQuestion);
         editQuest = root.findViewById(R.id.editText1);
         Team = new ArrayList<String>();
+        TeamID = new ArrayList<Integer>();
+
 
 
 
@@ -89,7 +81,6 @@ public class NotificationsFragment extends Fragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Collections.sort(Team);
         System.out.println(Team);
 
         LayoutInflater inflator = (LayoutInflater) getActivity().getBaseContext()
@@ -106,7 +97,20 @@ public class NotificationsFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+               // System.out.println(editQuest.getText().toString());
+                int i=0;
+                System.out.println(Team.get(i));
+                System.out.println(TeamID.get(i));
                 System.out.println(editQuest.getText().toString());
+                for(i=0;i<Team.size();i++){
+                    if(Team.get(i).equals(editQuest.getText().toString())) {
+                        TeamID.get(i);
+                        System.out.println(TeamID.get(i));
+                    }
+                }
+
+
             }
         });
 
@@ -167,6 +171,8 @@ public class NotificationsFragment extends Fragment {
             // Team name
             JSONObject step6 = step5.getJSONObject("team");
             String team_name = step6.getString("name");
+            int team_id = step6.getInt("id");
+            TeamID.add(team_id);
             Team.add(team_name);
 
 
