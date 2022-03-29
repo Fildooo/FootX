@@ -26,8 +26,8 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.footx.R;
+
 import com.example.footx.databinding.FragmentDashboardBinding;
-import com.example.footx.databinding.FragmentHomeBinding;
 import com.example.footx.ui.home.HomeViewModel;
 import com.squareup.picasso.Picasso;
 
@@ -235,6 +235,7 @@ public class DashboardFragment extends Fragment {
 
         TableLayout table = (TableLayout) root.findViewById(R.id.idTable);
         TableRow row;
+
         // Decode
         JSONObject obj = new JSONObject(str);
         JSONArray infosLeague = obj.getJSONArray("response");
@@ -243,14 +244,16 @@ public class DashboardFragment extends Fragment {
         JSONArray step3 = step2.getJSONArray("standings");
         JSONArray step4 = step3.getJSONArray(0);
 
-        int count = table.getChildCount();
-        for(int f=0; f<count; f++) {
+        int count1 = table.getChildCount();
+        for(int f=0; f<count1; f++) {
             View child = table.getChildAt(f);
             if(child instanceof TableRow) ((ViewGroup) child).removeAllViews();
         }
 
         row = new TableRow(getActivity().getBaseContext());
         row.setBackgroundResource(R.drawable.background_row);
+        row.setWeightSum(10);
+        row.setPadding(0,0,0,-100);
 
         v1 = new TextView(getActivity().getBaseContext());
         v1.setText("");
@@ -373,6 +376,7 @@ public class DashboardFragment extends Fragment {
         table.addView(row);
 
         for (int i = 0; i < step4.length(); i++) {
+
             JSONObject step5 = step4.getJSONObject(i);
 
             // Rank
@@ -421,7 +425,7 @@ public class DashboardFragment extends Fragment {
 
             row = new TableRow(getActivity().getBaseContext());
             row.setBackgroundResource(R.drawable.background_row);
-
+            row.setWeightSum(10);
             tv1 = new TextView(getActivity().getBaseContext());
             tv1.setText(col1);
             tv1.setTextColor(Color.WHITE);
@@ -508,7 +512,7 @@ public class DashboardFragment extends Fragment {
             }
             row.addView(tv4);
             if (tv5.getParent() != null) {
-                ((ViewGroup) tv5.getParent()).removeView(tv5); // <- fix
+                ((ViewGroup) tv5.getParent()).removeView(tv5);// <- fix
             }
             row.addView(tv5);
             if (tv6.getParent() != null) {
