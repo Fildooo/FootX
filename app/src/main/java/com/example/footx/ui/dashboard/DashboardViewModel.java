@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel;
 public class DashboardViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
-
+//oui
     public DashboardViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("SpeedNews recherche");
