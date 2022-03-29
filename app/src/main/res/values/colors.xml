@@ -3,8 +3,9 @@
     <color name="jaune">#f5cc23</color>
     <color name="rouge">#de0e10</color>
     <color name="bleu">#000000</color>
-    <color name="teal_200">#FF03DAC5</color>
+    <color name="bleu_1">#0A207E</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="gris">#303030</color>
 </resources>

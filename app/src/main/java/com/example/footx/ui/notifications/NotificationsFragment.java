@@ -107,8 +107,36 @@ public class NotificationsFragment extends Fragment {
                     if(Team.get(i).equals(editQuest.getText().toString())) {
                         TeamID.get(i);
                         System.out.println(TeamID.get(i));
+                        int IdTeam = TeamID.get(i);
+                        String IdT = TeamID.get(i).toString();
+                        String IdLeague;
+                        String IdL;
+                        if(IdTeam<=19){
+                            IdLeague = "61";
+                            try {
+                                traitementTeam(IdLeague,IdT);
+                            } catch (ExecutionException e) {
+                                e.printStackTrace();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        else if (IdTeam>19 && IdTeam<=40){
+                            IdLeague = "39";
+                        }
+                        else if (IdTeam>40 && IdTeam<=61){
+                            IdLeague = "140";
+                        }
+                        else if (IdTeam>61 && IdTeam<=80){
+                            IdLeague = "78";
+                        }
+                        else{
+                            IdLeague = "135";
+                        }
                     }
+
                 }
+
 
 
             }
@@ -122,6 +150,37 @@ public class NotificationsFragment extends Fragment {
         try {
             HttpURLConnection connection = null;
             URL url = new URL("https://v3.football.api-sports.io/standings?league="+id+"&season=2021");
+            connection = (HttpsURLConnection) url.openConnection();
+            connection.setDoOutput(true);
+            connection.addRequestProperty("x-apisports-key", "fb0f3952c194ffdfeb0fcdd8ba320399");
+            System.out.println(connection.getResponseCode());
+            InputStream inputStream = connection.getInputStream();
+            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            String ligne = bufferedReader.readLine() ;
+            while (ligne!= null){
+                response+=ligne;
+                ligne = bufferedReader.readLine();
+            }
+            JSONObject toDecode = new JSONObject(response);
+            //response = decodeJSON(toDecode);
+        } catch (UnsupportedEncodingException e) {
+            response = "problème d'encodage";
+        } catch (MalformedURLException e) {
+            response = "problème d'URL ";
+        }  catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        return response;
+    }
+
+    private static String requeteTeamMatch(String IdLeague, String IdTeam) {
+        String response = "";
+        try {
+            HttpURLConnection connection = null;
+            URL url = new URL("https://v3.football.api-sports.io/fixtures?league="+IdLeague+"&season=2021&team="+IdTeam);
             connection = (HttpsURLConnection) url.openConnection();
             connection.setDoOutput(true);
             connection.addRequestProperty("x-apisports-key", "fb0f3952c194ffdfeb0fcdd8ba320399");
@@ -186,12 +245,33 @@ public class NotificationsFragment extends Fragment {
         return req;
     }
 
-    public static class RequestTask extends AsyncTask<String, Void, String> {
+
+    private String traitementTeam(String IdLeague, String IdTeam) throws ExecutionException, InterruptedException {
+        String req;
+        ParamTask params = new ParamTask(IdLeague,IdTeam);
+        RequestTask task = new RequestTask();
+        req = task.execute(params).get();
+        return req;
+
+    }
+
+    public static class ParamTask {
+        String IdLeague;
+        String IdTeam;
+
+        ParamTask(String IdLeague, String IdTeam) {
+            this.IdLeague = IdLeague;
+            this.IdTeam = IdTeam;
+        }
+    }
+
+    public static class RequestTask extends AsyncTask<ParamTask, Void, String> {
         // Le corps de la tâche asynchrone (exécuté en tâche de fond)
         //  lance la requète
-        protected String doInBackground(String... id) {
-            String response = requeteTeam(id[0]);
-            return response;
+        protected String doInBackground(ParamTask... params) {
+            String IdLeague = params[0].IdLeague;
+            String IdTeam = params[0].IdTeam;
+            return requeteTeamMatch(IdLeague,IdTeam);
         }
 
         protected void onPostExecute(String result) {

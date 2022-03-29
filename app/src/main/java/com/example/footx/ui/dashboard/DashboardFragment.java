@@ -1,5 +1,6 @@
 package com.example.footx.ui.dashboard;
 
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -68,6 +69,7 @@ public class DashboardFragment extends Fragment {
                 R.array.classement_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -248,9 +250,11 @@ public class DashboardFragment extends Fragment {
         }
 
         row = new TableRow(getActivity().getBaseContext());
+        row.setBackgroundResource(R.drawable.background_row);
 
         v1 = new TextView(getActivity().getBaseContext());
         v1.setText("");
+        v1.setTextColor(Color.parseColor("#0A207E"));
         v1.setGravity(Gravity.CENTER);
         v1.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.WRAP_CONTENT, 1));
 
@@ -281,6 +285,7 @@ public class DashboardFragment extends Fragment {
 
         v4 = new TextView(getActivity().getBaseContext());
         v4.setText("MJ");
+        v4.setTextColor(Color.WHITE);
         v4.setGravity(Gravity.CENTER);
         v4.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.WRAP_CONTENT, 1));
 
@@ -291,6 +296,7 @@ public class DashboardFragment extends Fragment {
 
         v5 = new TextView(getActivity().getBaseContext());
         v5.setText("G");
+        v5.setTextColor(Color.WHITE);
         v5.setGravity(Gravity.CENTER);
         v5.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.WRAP_CONTENT, 1));
 
@@ -301,6 +307,7 @@ public class DashboardFragment extends Fragment {
 
         v6 = new TextView(getActivity().getBaseContext());
         v6.setText("N");
+        v6.setTextColor(Color.WHITE);
         v6.setGravity(Gravity.CENTER);
         v6.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.WRAP_CONTENT, 1));
 
@@ -311,6 +318,7 @@ public class DashboardFragment extends Fragment {
 
         v7 = new TextView(getActivity().getBaseContext());
         v7.setText("P");
+        v7.setTextColor(Color.WHITE);
         v7.setGravity(Gravity.CENTER);
         v7.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.WRAP_CONTENT, 1));
 
@@ -321,6 +329,7 @@ public class DashboardFragment extends Fragment {
 
         v8 = new TextView(getActivity().getBaseContext());
         v8.setText("BP");
+        v8.setTextColor(Color.WHITE);
         v8.setGravity(Gravity.CENTER);
         v8.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.WRAP_CONTENT, 1));
 
@@ -331,6 +340,7 @@ public class DashboardFragment extends Fragment {
 
         v9 = new TextView(getActivity().getBaseContext());
         v9.setText("BC");
+        v9.setTextColor(Color.WHITE);
         v9.setGravity(Gravity.CENTER);
         v9.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.WRAP_CONTENT, 1));
 
@@ -341,6 +351,7 @@ public class DashboardFragment extends Fragment {
 
         v10 = new TextView(getActivity().getBaseContext());
         v10.setText("DB");
+        v10.setTextColor(Color.WHITE);
         v10.setGravity(Gravity.CENTER);
         v10.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.WRAP_CONTENT, 1));
 
@@ -351,6 +362,7 @@ public class DashboardFragment extends Fragment {
 
         v11 = new TextView(getActivity().getBaseContext());
         v11.setText("Pts");
+        v11.setTextColor(Color.WHITE);
         v11.setGravity(Gravity.CENTER);
         v11.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.WRAP_CONTENT, 1));
 
@@ -408,9 +420,11 @@ public class DashboardFragment extends Fragment {
 
 
             row = new TableRow(getActivity().getBaseContext());
+            row.setBackgroundResource(R.drawable.background_row);
 
             tv1 = new TextView(getActivity().getBaseContext());
             tv1.setText(col1);
+            tv1.setTextColor(Color.WHITE);
             tv1.setGravity(Gravity.CENTER);
             tv1.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
@@ -420,47 +434,56 @@ public class DashboardFragment extends Fragment {
 
             tv2 = new TextView(getActivity().getBaseContext());
             tv2.setText(col2);
+            tv2.setTextColor(Color.WHITE);
             tv2.setGravity(Gravity.CENTER);
             tv2.setSingleLine();
             tv2.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
             tv3 = new TextView(getActivity().getBaseContext());
             tv3.setText(col3);
+            tv3.setTextColor(Color.WHITE);
             tv3.setGravity(Gravity.CENTER);
             tv3.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
             tv4 = new TextView(getActivity().getBaseContext());
             tv4.setText(col4);
+            tv4.setTextColor(Color.WHITE);
             tv4.setGravity(Gravity.CENTER);
             tv4.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
             tv5 = new TextView(getActivity().getBaseContext());
             tv5.setText(col5);
+            tv5.setTextColor(Color.WHITE);
             tv5.setGravity(Gravity.CENTER);
             tv5.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
             tv6 = new TextView(getActivity().getBaseContext());
             tv6.setText(col6);
+            tv6.setTextColor(Color.WHITE);
             tv6.setGravity(Gravity.CENTER);
             tv6.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
             tv7 = new TextView(getActivity().getBaseContext());
             tv7.setText(col7);
+            tv7.setTextColor(Color.WHITE);
             tv7.setGravity(Gravity.CENTER);
             tv7.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
             tv8 = new TextView(getActivity().getBaseContext());
             tv8.setText(col8);
+            tv8.setTextColor(Color.WHITE);
             tv8.setGravity(Gravity.CENTER);
             tv8.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
             tv9 = new TextView(getActivity().getBaseContext());
             tv9.setText(col9);
+            tv9.setTextColor(Color.WHITE);
             tv9.setGravity(Gravity.CENTER);
             tv9.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
             tv10 = new TextView(getActivity().getBaseContext());
             tv10.setText(col10);
+            tv10.setTextColor(Color.WHITE);
             tv10.setGravity(Gravity.CENTER);
             tv10.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
