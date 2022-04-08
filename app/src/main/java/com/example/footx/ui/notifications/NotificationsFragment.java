@@ -12,7 +12,6 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.example.footx.R;
 import com.example.footx.databinding.FragmentNotificationsBinding;
@@ -37,7 +36,6 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class NotificationsFragment extends Fragment {
 
-    private NotificationsViewModel notificationsViewModel;
     private FragmentNotificationsBinding binding;
     private AutoCompleteTextView editQuest;
     private ArrayList<String> Team ;
@@ -46,8 +44,6 @@ public class NotificationsFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        notificationsViewModel =
-                new ViewModelProvider(this).get(NotificationsViewModel.class);
 
         binding = FragmentNotificationsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -64,15 +60,15 @@ public class NotificationsFragment extends Fragment {
 
         try {
             String str1 = traitement("61");
-            decodeJSON(str1, root);
+            decodeTeamJSON(str1, root);
             String str2 = traitement("39");
-            decodeJSON(str2, root);
+            decodeTeamJSON(str2, root);
             String str3 = traitement("140");
-            decodeJSON(str3, root);
+            decodeTeamJSON(str3, root);
             String str4 = traitement("78");
-            decodeJSON(str4, root);
+            decodeTeamJSON(str4, root);
             String str5 = traitement("135");
-            decodeJSON(str5, root);
+            decodeTeamJSON(str5, root);
 
         } catch (ExecutionException e) {
             e.printStackTrace();
@@ -98,83 +94,86 @@ public class NotificationsFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-               // System.out.println(editQuest.getText().toString());
+                // System.out.println(editQuest.getText().toString());
                 int i=0;
-                System.out.println(Team.get(i));
-                System.out.println(TeamID.get(i));
-                System.out.println(editQuest.getText().toString());
                 for(i=0;i<Team.size();i++){
                     if(Team.get(i).equals(editQuest.getText().toString())) {
-                        TeamID.get(i);
-                        System.out.println(TeamID.get(i));
-                        int IdTeam = TeamID.get(i);
+                        int IdTeam = i;
                         String IdT = TeamID.get(i).toString();
                         String IdLeague;
-                        String IdL;
                         if(IdTeam<=19){
                             IdLeague = "61";
                             try {
-                                traitementTeam(IdLeague,IdT);
+                                String str = traitementTeam(IdLeague,IdT);
+                                decodeTeamMatchJSON(str,root);
                             } catch (ExecutionException e) {
                                 e.printStackTrace();
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
                         }
-                        else if (IdTeam>19 && IdTeam<=40){
+                        else if (IdTeam>19 && IdTeam<=39){
                             IdLeague = "39";
+                            try {
+                                String str = traitementTeam(IdLeague,IdT);
+                                decodeTeamMatchJSON(str,root);
+                            } catch (ExecutionException e) {
+                                e.printStackTrace();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                         }
-                        else if (IdTeam>40 && IdTeam<=61){
+                        else if (IdTeam>=40 && IdTeam<=59){
                             IdLeague = "140";
+                            try {
+                                String str = traitementTeam(IdLeague,IdT);
+                                decodeTeamMatchJSON(str,root);
+                            } catch (ExecutionException e) {
+                                e.printStackTrace();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                         }
-                        else if (IdTeam>61 && IdTeam<=80){
+                        else if (IdTeam>=60 && IdTeam<=77){
                             IdLeague = "78";
+                            try {
+                                String str = traitementTeam(IdLeague,IdT);
+                                decodeTeamMatchJSON(str,root);
+                            } catch (ExecutionException e) {
+                                e.printStackTrace();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                         }
                         else{
                             IdLeague = "135";
+                            try {
+                                String str = traitementTeam(IdLeague,IdT);
+                                decodeTeamMatchJSON(str,root);
+                            } catch (ExecutionException e) {
+                                e.printStackTrace();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
-
                 }
-
-
-
             }
         });
 
         return root;
     }
 
-    private static String requeteTeam(String id) {
-        String response = "";
-        try {
-            HttpURLConnection connection = null;
-            URL url = new URL("https://v3.football.api-sports.io/standings?league="+id+"&season=2021");
-            connection = (HttpsURLConnection) url.openConnection();
-            connection.setDoOutput(true);
-            connection.addRequestProperty("x-apisports-key", "fb0f3952c194ffdfeb0fcdd8ba320399");
-            System.out.println(connection.getResponseCode());
-            InputStream inputStream = connection.getInputStream();
-            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-            String ligne = bufferedReader.readLine() ;
-            while (ligne!= null){
-                response+=ligne;
-                ligne = bufferedReader.readLine();
-            }
-            JSONObject toDecode = new JSONObject(response);
-            //response = decodeJSON(toDecode);
-        } catch (UnsupportedEncodingException e) {
-            response = "problème d'encodage";
-        } catch (MalformedURLException e) {
-            response = "problème d'URL ";
-        }  catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
-        return response;
-    }
 
     private static String requeteTeamMatch(String IdLeague, String IdTeam) {
         String response = "";
@@ -207,9 +206,16 @@ public class NotificationsFragment extends Fragment {
         return response;
     }
 
+    public void decodeTeamMatchJSON(String str, View root) throws JSONException {
 
 
-    public void decodeJSON(String str, View root) throws JSONException {
+        // Ici décoder les matchs de la requête de chaque équipe
+
+
+    }
+
+
+    public void decodeTeamJSON(String str, View root) throws JSONException {
 
 
 
@@ -271,7 +277,8 @@ public class NotificationsFragment extends Fragment {
         protected String doInBackground(ParamTask... params) {
             String IdLeague = params[0].IdLeague;
             String IdTeam = params[0].IdTeam;
-            return requeteTeamMatch(IdLeague,IdTeam);
+            String response = requeteTeamMatch(IdLeague, IdTeam);
+            return response;
         }
 
         protected void onPostExecute(String result) {

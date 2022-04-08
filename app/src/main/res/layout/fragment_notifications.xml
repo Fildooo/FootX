@@ -15,18 +15,19 @@
   />
 
   <AutoCompleteTextView
+      android:id="@+id/editText1"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:id="@+id/editText1"
       android:ems="10"
       android:imeOptions="actionSearch"
       android:inputType="textAutoComplete|textAutoCorrect"
-    />
+      tools:visibility="gone" />
+
   <Button
+      android:id="@+id/buttonQuestion"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:id="@+id/buttonQuestion"
-      android:text="@string/ButtonQuestion"
       android:onClick="Value"
-      />
+      android:text="@string/ButtonQuestion"
+      tools:visibility="gone" />
 </LinearLayout>
