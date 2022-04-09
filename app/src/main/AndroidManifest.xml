@@ -25,6 +25,21 @@
             android:exported="true"
             android:label="@string/app_name">
         </activity>
+        <activity
+            android:name="com.example.footx.InscriptionActivity"
+            android:exported="true"
+            android:label="@string/app_name">
+        </activity>
+        <activity
+            android:name="com.example.footx.ConnexionActivity"
+            android:exported="true"
+            android:label="@string/app_name">
+        </activity>
+        <activity
+            android:name="com.example.footx.DetailsMatch"
+            android:exported="true"
+            android:label="@string/app_name">
+        </activity>
     </application>
 
 </manifest>
