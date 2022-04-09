@@ -21,23 +21,48 @@
 
     <AutoCompleteTextView
         android:id="@+id/editText1"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:textColor="#ffffff"
         android:imeOptions="actionSearch"
         android:inputType="textAutoComplete|textAutoCorrect"
         tools:visibility="gone" />
   </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-  <Button
+  <androidx.appcompat.widget.AppCompatButton
       android:id="@+id/buttonQuestion"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:layout_gravity="center"
       android:onClick="Value"
       android:text="@string/ButtonQuestion"
-      android:textColor="#000000"
-      tools:visibility="gone"
+      android:textColor="#ffffff"
+      android:background="@drawable/custom_button"
+      android:textAllCaps="false"
+      android:paddingHorizontal="10dp"
+      android:paddingVertical="15dp"
+      />
+  <TextView
+      android:layout_height="wrap_content"
+      android:layout_width="match_parent"
+      android:id="@+id/prochain"
+      />
+
+    <TableLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:stretchColumns="0"
+        android:layout_height="wrap_content"
+        android:id="@+id/idTable1"
+        android:paddingBottom="50dp"
+        >
+    </TableLayout>
+  <TextView
+      android:layout_height="wrap_content"
+      android:layout_width="match_parent"
+      android:id="@+id/listmatch"
       />
   <ScrollView
       android:layout_width="match_parent"

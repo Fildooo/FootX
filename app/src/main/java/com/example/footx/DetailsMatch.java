@@ -11,6 +11,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+
 import com.example.footx.ui.notifications.NotificationsFragment;
 import com.squareup.picasso.Picasso;
 
@@ -25,7 +26,7 @@ public class DetailsMatch extends AppCompatActivity {
         LinearLayout line = (LinearLayout) findViewById(R.id.idLine);
 
         t1 = new TextView(getBaseContext());
-        t1.setText("Date du match : "+NotificationsFragment.getDATE());
+        t1.setText("Date du match : "+ NotificationsFragment.getDATE());
         t1.setTextColor(Color.WHITE);
 
         line.addView(t1);

@@ -14,13 +14,13 @@
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.example.footx.ui.dashboard.DashboardFragment"
-        android:label="@string/title_recherche"
+        android:label="@string/classement"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.example.footx.ui.notifications.NotificationsFragment"
-        android:label="@string/title_profil"
+        android:label="@string/matchs"
         tools:layout="@layout/fragment_notifications" />
 
 </navigation>

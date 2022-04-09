@@ -8,8 +8,11 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -179,9 +182,10 @@ public class NotificationsFragment extends Fragment {
     private ArrayList<String> Team ;
     private ArrayList<Integer> TeamID;
 
-    TextView tv1,tv2,tv3,tv4,tv5,tv6,tv7,tv8,tv9, d1, stade1, nu;
+    TextView tv1,tv2,tv3, d1, stade1, nu, nu1;
     ImageView iv1, iv2;
     Button btnInfo;
+
 
 
     public static String getDATE() {
@@ -236,10 +240,14 @@ public class NotificationsFragment extends Fragment {
         View v = inflator.inflate(R.layout.fragment_notifications, (ViewGroup) root);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getBaseContext(),
-                android.R.layout.simple_dropdown_item_1line, Team);
+               R.layout.custom_autocomplete, Team);
         AutoCompleteTextView textView = (AutoCompleteTextView) v
                 .findViewById(R.id.editText1);
         textView.setAdapter(adapter);
+
+
+
+
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -320,8 +328,9 @@ public class NotificationsFragment extends Fragment {
                     }
                 }
             }
-        });
 
+        });
+       
         return root;
     }
 
@@ -362,7 +371,20 @@ public class NotificationsFragment extends Fragment {
 
         // Ici décoder les matchs de la requête de chaque équipe
         TableLayout table = (TableLayout) root.findViewById(R.id.idTable);
-        TableRow row, row2, row3, row4, rowSep;
+        TableLayout table1 = (TableLayout) root.findViewById(R.id.idTable1);
+        TableRow row, row2, row3, row4, rowSep, rowSep1, rowText;
+
+        int count1 = table.getChildCount();
+        for(int f=0; f<count1; f++) {
+            View child = table.getChildAt(f);
+            if(child instanceof TableRow) ((ViewGroup) child).removeAllViews();
+        }
+
+        int count2 = table1.getChildCount();
+        for(int f=0; f<count2; f++) {
+            View child = table1.getChildAt(f);
+            if(child instanceof TableRow) ((ViewGroup) child).removeAllViews();
+        }
 
         JSONObject obj = new JSONObject(str);
         JSONArray step1 = obj.getJSONArray("response");
@@ -371,6 +393,7 @@ public class NotificationsFragment extends Fragment {
         rowSep.setBackgroundResource(R.drawable.background_row2);
 
         final String nul = "    ";
+
 
         nu = new TextView(getActivity().getBaseContext());
         nu.setText(nul);
@@ -386,6 +409,12 @@ public class NotificationsFragment extends Fragment {
         rowSep.addView(nu);
         table.addView(rowSep);
 
+        TextView Prochain = (TextView) root.findViewById(R.id.prochain);
+        Prochain.setText("Prochain match : ");
+        TextView Historique = (TextView) root.findViewById(R.id.listmatch);
+        Historique.setText("Historique des matchs: ");
+
+        int k = 0;
         for (int i = step1.length()-1; i >= 0; i--) {
 
 
@@ -397,21 +426,19 @@ public class NotificationsFragment extends Fragment {
             String arbitre = step3.getString("referee");
 
             String[] date1 = date.split("T");
-            System.out.println(date);
+
 
             // Stade et lieu du stade
             JSONObject step4 = step3.getJSONObject("venue");
             String stade_name = step4.getString("name");
             String stade_ville = step4.getString("city");
-            System.out.println(stade_name);
-            System.out.println(stade_ville);
+
 
             // Statut du match
             JSONObject step5 = step3.getJSONObject("status");
             String statut = step5.getString("long");
             String temps = step5.getString("elapsed");
-            System.out.println(statut);
-            System.out.println(temps);
+
 
 
 
@@ -423,17 +450,12 @@ public class NotificationsFragment extends Fragment {
             JSONObject step8 = step6.getJSONObject("away");
             String away_team = step8.getString("name");
             String away_team_logo = step8.getString("logo");
-            System.out.println(home_team);
-            System.out.println(home_team_logo);
-            System.out.println(away_team);
-            System.out.println(away_team_logo);
+
 
             // Les buts
             JSONObject step9 = step2.getJSONObject("goals");
             String home_goal = step9.getString("home");
             String away_goal = step9.getString("away");
-            System.out.println(home_goal);
-            System.out.println(away_goal);
             JSONObject step10 = step2.getJSONObject("score");
             JSONObject step11 = step10.getJSONObject("halftime");
             String home_halfgoal = step11.getString("home");
@@ -441,6 +463,152 @@ public class NotificationsFragment extends Fragment {
             JSONObject step12 = step10.getJSONObject("penalty");
             String home_penogoal = step11.getString("home");
             String away_penogoal = step11.getString("away");
+            if(k==0){
+                if(statut.equals("Not Started")){
+                    JSONObject step2bis = step1.getJSONObject(i-1);
+                    JSONObject step3bis = step2bis.getJSONObject("fixture");
+                    JSONObject step5bis = step3bis.getJSONObject("status");
+                    String statutbis = step5bis.getString("long");
+
+                    if(statutbis.equals("Match Finished")){
+                        k++;
+                        final String col1 = home_team;
+                        final String col2 = " - ";
+                        final String col3 = away_team;
+                        final String colivhome = home_team_logo;
+                        final String colivaway = away_team_logo;
+                        final String coldate = date1[0];
+                        final String stade = stade_name;
+                        final String nulll = "    ";
+
+
+
+                        row = new TableRow(getActivity().getBaseContext());
+
+                        row2 = new TableRow(getActivity().getBaseContext());
+
+                        row3 = new TableRow(getActivity().getBaseContext());
+
+                        row4 = new TableRow(getActivity().getBaseContext());
+
+                        rowSep = new TableRow(getActivity().getBaseContext());
+                        rowSep.setBackgroundResource(R.drawable.background_row2);
+
+                        rowSep1 = new TableRow(getActivity().getBaseContext());
+                        rowSep1.setBackgroundResource(R.drawable.background_row2);
+
+
+
+
+
+                        nu1 = new TextView(getActivity().getBaseContext());
+                        nu1.setText(nulll);
+                        nu1.setTextSize(1,1);
+                        nu1.setTextColor(Color.WHITE);
+                        nu1.setGravity(Gravity.CENTER);
+                        nu1.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.MATCH_PARENT, 1));
+
+                        if (nu1.getParent() != null) {
+                            ((ViewGroup) nu1.getParent()).removeView(nu1); // <- fix
+                        }
+                        rowSep1.addView(nu1);
+                        table1.addView(rowSep1);
+
+                        d1 = new TextView(getActivity().getBaseContext());
+                        d1.setText(coldate);
+                        d1.setTextColor(Color.WHITE);
+                        d1.setGravity(Gravity.CENTER);
+                        d1.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
+
+                        tv1 = new TextView(getActivity().getBaseContext());
+                        tv1.setText(col1);
+                        tv1.setTextColor(Color.WHITE);
+                        tv1.setGravity(Gravity.CENTER);
+                        tv1.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
+
+                        iv1 = new ImageView(getActivity().getBaseContext());
+                        Picasso.get().load(colivhome).into(iv1);
+                        iv1.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.MATCH_PARENT, 1));
+
+                        tv2 = new TextView(getActivity().getBaseContext());
+                        tv2.setText(col2);
+                        tv2.setTypeface(Typeface.DEFAULT_BOLD);
+                        tv2.setTextColor(Color.WHITE);
+                        tv2.setGravity(Gravity.CENTER);
+                        tv2.setSingleLine();
+                        tv2.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
+
+                        iv2 = new ImageView(getActivity().getBaseContext());
+                        Picasso.get().load(colivaway).into(iv2);
+                        iv2.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.MATCH_PARENT, 1));
+
+                        tv3 = new TextView(getActivity().getBaseContext());
+                        tv3.setText(col3);
+                        tv3.setTextColor(Color.WHITE);
+                        tv3.setGravity(Gravity.CENTER);
+                        tv3.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.MATCH_PARENT, 1));
+
+                        stade1 = new TextView(getActivity().getBaseContext());
+                        stade1.setText(stade);
+                        stade1.setTextColor(Color.WHITE);
+                        stade1.setGravity(Gravity.CENTER);
+                        stade1.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.MATCH_PARENT, 1));
+
+                        nu = new TextView(getActivity().getBaseContext());
+                        nu.setText(nulll);
+                        nu.setTextSize(1,1);
+                        nu.setTextColor(Color.WHITE);
+                        nu.setGravity(Gravity.CENTER);
+                        nu.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.MATCH_PARENT, 1));
+
+
+
+                        if (d1.getParent() != null) {
+                            ((ViewGroup) d1.getParent()).removeView(d1); // <- fix
+                        }
+                        row2.addView(d1);
+                        if (tv1.getParent() != null) {
+                            ((ViewGroup) tv1.getParent()).removeView(tv1); // <- fix
+                        }
+                        row.addView(tv1);
+                        if (iv1.getParent() != null) {
+                            ((ViewGroup) iv1.getParent()).removeView(iv1); // <- fix
+                        }
+                        row.addView(iv1);
+                        if (tv2.getParent() != null) {
+                            ((ViewGroup) tv2.getParent()).removeView(tv2); // <- fix
+                        }
+                        row.addView(tv2);
+                        if (iv2.getParent() != null) {
+                            ((ViewGroup) iv2.getParent()).removeView(iv2); // <- fix
+                        }
+                        row.addView(iv2);
+                        if (tv3.getParent() != null) {
+                            ((ViewGroup) tv3.getParent()).removeView(tv3); // <- fix
+                        }
+                        row.addView(tv3);
+                        if (stade1.getParent() != null) {
+                            ((ViewGroup) stade1.getParent()).removeView(stade1); // <- fix
+                        }
+                        row3.addView(stade1);
+                        if (nu.getParent() != null) {
+                            ((ViewGroup) nu.getParent()).removeView(nu); // <- fix
+                        }
+                        rowSep.addView(nu);
+
+
+                        table1.addView(row2);
+                        table1.addView(row);
+                        table1.addView(row3);
+                        table1.addView(row4);
+                        table1.addView(rowSep);
+
+
+                    }
+                }
+            }
+
+
 
 
 
@@ -516,8 +684,10 @@ public class NotificationsFragment extends Fragment {
 
                 btnInfo = new Button(getActivity().getBaseContext());
                 btnInfo.setText("Détails");
-                btnInfo.setTextColor(Color.BLACK);
+                btnInfo.setTextColor(Color.WHITE);
                 btnInfo.setGravity(Gravity.CENTER);
+                btnInfo.setBackgroundResource(R.drawable.custom_button1);
+                btnInfo.setPadding(10,15,10,15);
                 btnInfo.setOnClickListener(new View.OnClickListener() {
                                                public void onClick(View v) {
                                                    DATE = date1[0];
