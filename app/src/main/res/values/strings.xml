@@ -5,7 +5,7 @@
     <string name="title_profil">Profil</string>
     <string name="ville">Ville</string>
     <string name="go">Go</string>
-    <string name="Question">Choisissez une équipe </string>
+    <string name="Question">Choisissez une équipe :</string>
     <string name="ButtonQuestion">Valider</string>
     <string-array name="classement_array">
         <item>Ligue 1</item>
@@ -14,4 +14,6 @@
         <item>Bundesliga</item>
         <item>Serie A</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
