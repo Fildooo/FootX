@@ -21,6 +21,7 @@ public class ConnexionActivity extends AppCompatActivity {
     private EditText mdp;
     private Button connect;
     private Button inscrirepc;
+    private TextView error_msg;
 
     DBHandler db;
 
@@ -36,6 +37,8 @@ public class ConnexionActivity extends AppCompatActivity {
 
         this.connect = (Button) this.findViewById(R.id.button_connect);
         this.inscrirepc = (Button) this.findViewById(R.id.button_inscrirepc);
+        error_msg = findViewById(R.id.textView5);
+
 
         db = new DBHandler(this);
 
@@ -48,9 +51,8 @@ public class ConnexionActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                     finish();
-                    System.out.println("test ok");
                 }else {
-                    System.out.println("fail");
+                    error_msg.setText("Pseudo ou mot de passe incorrect");
                 }
 
             }

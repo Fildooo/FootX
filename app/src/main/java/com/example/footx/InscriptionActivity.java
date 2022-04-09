@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -41,6 +42,7 @@ public class InscriptionActivity extends AppCompatActivity {
     private AutoCompleteTextView autocompletev;
     private ArrayList<String> Team ;
     private ArrayList<Integer> TeamID;
+    private TextView error_msg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,7 @@ public class InscriptionActivity extends AppCompatActivity {
         TeamID = new ArrayList<Integer>();
 
         autocompletev = findViewById(R.id.autocompletev);
+        error_msg = findViewById(R.id.textView5);
 
 
 
@@ -101,7 +104,6 @@ public class InscriptionActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), ConnexionActivity.class);
                     startActivity(intent);
                     finish();
-                    System.out.println("test ok");
                     for(int i=0;i<Team.size();i++) {
                         if(Team.get(i).equals(autocompletev.getText().toString())) {
                             String p = pseudo.getText().toString();
@@ -112,7 +114,7 @@ public class InscriptionActivity extends AppCompatActivity {
                         }
                     }
                 }else {
-                    System.out.println("mdp différents");
+                    error_msg.setText("Les mots de passes ne correspondent pas");
                 }
             }
         });
@@ -123,7 +125,6 @@ public class InscriptionActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), ConnexionActivity.class);
                 startActivity(intent);
                 finish();
-                System.out.println("test pas encore de comtpe bv");
             }
         });
     }
