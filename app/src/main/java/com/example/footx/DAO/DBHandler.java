@@ -1,5 +1,6 @@
 package com.example.footx.DAO;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -39,6 +40,21 @@ public class DBHandler extends SQLiteOpenHelper {
 
 
         db.insert(DBContract.Form.TABLE_NAME, null, values);
+    }
+
+    public String recupEquipe(String username) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT "+DBContract.Form.COLUMN_TEAMID+" FROM "+DBContract.Form.TABLE_NAME+
+                " WHERE "+DBContract.Form.COLUMN_NAME+" = ?";
+
+        Cursor  cursor = db.rawQuery(query, new String[]{username});
+
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        @SuppressLint("Range")
+        String tid = cursor.getString(cursor.getColumnIndex(DBContract.Form.COLUMN_TEAMID));
+        return tid;
     }
 
     public boolean checkLogin(String username, String password) {

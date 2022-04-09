@@ -1,11 +1,8 @@
 package com.example.footx;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -15,7 +12,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.footx.DAO.DBHandler;
-import com.example.footx.databinding.ActivityConnexionBinding;
 import com.example.footx.databinding.ActivityInscriptionBinding;
 import com.example.footx.ui.dashboard.DashboardFragment;
 
@@ -38,7 +34,6 @@ public class InscriptionActivity extends AppCompatActivity {
 
     DBHandler db;
 
-
     private AutoCompleteTextView autocompletev;
     private ArrayList<String> Team ;
     private ArrayList<Integer> TeamID;
@@ -56,15 +51,11 @@ public class InscriptionActivity extends AppCompatActivity {
         this.mdp2 = (EditText) this.findViewById(R.id.editText_mdpi2);
         db = new DBHandler(this);
 
-
         Team = new ArrayList<String>();
         TeamID = new ArrayList<Integer>();
 
         autocompletev = findViewById(R.id.autocompletev);
         error_msg = findViewById(R.id.textView5);
-
-
-
 
         try {
             String str1 = traitement("61");
