@@ -51,7 +51,9 @@ import javax.net.ssl.HttpsURLConnection;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-    private TextView infosuser;
+    private ImageView imageView, imageView3;
+    private TextView form, mj1, mj2, mj3, mscore1, mscore2, mscore3, infosuser, equipepref, ligue,
+            bp1,bp2, bp3, bc1, bc2, bc3;
 
     private ArrayList<String> TeamID;
 
@@ -66,6 +68,35 @@ public class MainActivity extends AppCompatActivity {
 
         infosuser = findViewById(R.id.infosuser);
         infosuser.setText("Bonjour "+getIntent().getStringExtra("pseudo"));
+
+        equipepref = findViewById(R.id.equipepref);
+        imageView = findViewById(R.id.imageview);
+        ligue = findViewById(R.id.ligue);
+        imageView3 = findViewById(R.id.imageview3);
+        form = findViewById(R.id.form);
+
+        mj1 = findViewById(R.id.mj1);
+        mj2 = findViewById(R.id.mj2);
+        mj3 = findViewById(R.id.mj3);
+
+        mscore1 = findViewById(R.id.mscore1);
+        mscore2 = findViewById(R.id.mscore2);
+        mscore3 = findViewById(R.id.mscore3);
+
+        bp1 = findViewById(R.id.bp1);
+        bp2 = findViewById(R.id.bp2);
+        bp3 = findViewById(R.id.bp3);
+
+        bc1 = findViewById(R.id.bc1);
+        bc2 = findViewById(R.id.bc2);
+        bc3 = findViewById(R.id.bc3);
+
+
+
+
+
+
+
         TeamID = new ArrayList<String>();
 
         try {
@@ -223,66 +254,69 @@ public class MainActivity extends AppCompatActivity {
         JSONObject step2 = step1.getJSONObject("league");
 
         String name_ligue = step2.getString("name");
-        System.out.println(name_ligue);
-        String country_ligue = step2.getString("country");
-        System.out.println(country_ligue);
-        String logo_ligue = step2.getString("logo");
-        System.out.println(logo_ligue);
-        String flag_ligue = step2.getString("flag");
-        System.out.println(flag_ligue);
         String season_ligue = step2.getString("season");
-        System.out.println(season_ligue);
+
+        ligue.setText(name_ligue+" - "+season_ligue);
+
+
+        String logo_ligue = step2.getString("logo");
+        Picasso.get().load(logo_ligue).into(imageView3);
 
         JSONObject step3 = step1.getJSONObject("team");
 
         String name_team = step3.getString("name");
-        System.out.println(name_team);
+        equipepref.setText(name_team);
+
         String logo_team = step3.getString("logo");
-        System.out.println(logo_team);
+        Picasso.get().load(logo_team).into(imageView);
+
         String histo_form = step1.getString("form");
-        System.out.println(histo_form);
+        form.setText(histo_form.substring(0,5));
 
         JSONObject step4 = step1.getJSONObject("fixtures");
         JSONObject step5 = step4.getJSONObject("played");
 
         String home_played = step5.getString("home");
-        System.out.println(home_played);
+        mj1.setText("Matchs à domicile "+home_played);
         String away_played = step5.getString("away");
-        System.out.println(away_played);
+        mj2.setText("Matchs à l'éxterieur "+away_played);
         String total_played = step5.getString("total");
-        System.out.println(total_played);
+        mj3.setText("Matchs totaux "+total_played);
 
         JSONObject step6 = step4.getJSONObject("wins");
         JSONObject step7 = step4.getJSONObject("draws");
         JSONObject step8 = step4.getJSONObject("loses");
 
         String victoires = step6.getString("total");
-        System.out.println(victoires);
+        mscore1.setText("Victoires "+victoires);
         String nul = step7.getString("total");
-        System.out.println(nul);
+        mscore2.setText("Nuls "+nul);
         String defaites = step8.getString("total");
-        System.out.println(defaites);
+        mscore3.setText("Défaites "+defaites);
+
 
         JSONObject step9 = step1.getJSONObject("goals");
         JSONObject step10 = step9.getJSONObject("for");
         JSONObject step11 = step10.getJSONObject("total");
 
         String home_but = step11.getString("home");
-        System.out.println(home_but);
+        bp1.setText("Buts à domicile "+home_but);
         String away_but = step11.getString("away");
-        System.out.println(away_but);
+        bp2.setText("Buts à l'éxterieur "+away_but);
         String total_but = step11.getString("total");
-        System.out.println(total_but);
+        bp3.setText("Buts totaux "+total_but);
+
 
         JSONObject step12 = step9.getJSONObject("against");
         JSONObject step13 = step12.getJSONObject("total");
 
         String home_but_encaisse = step13.getString("home");
-        System.out.println(home_but_encaisse);
+        bc1.setText("Encaissés à domicile "+home_but_encaisse);
         String away_but_encaisse = step13.getString("away");
-        System.out.println(away_but_encaisse);
+        bc2.setText("Encaissés à l'éxterieur "+away_but_encaisse);
         String total_but_encaisse = step13.getString("total");
-        System.out.println(total_but_encaisse);
+        bc3.setText("Encaissés totaux "+total_but_encaisse);
+
 
     }
 
