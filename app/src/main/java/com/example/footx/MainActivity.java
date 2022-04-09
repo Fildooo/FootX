@@ -101,10 +101,10 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         String str = traitementTeam(IdLeague,IdT);
                         System.out.println(str);
-                        //decodeTeamMatchJSON(str,root);
+                        decodeTeamMatchJSON(str,root);
                     } catch (ExecutionException e) {
                         e.printStackTrace();
-                    } catch (InterruptedException e) {
+                    } catch (JSONException | InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
@@ -113,10 +113,12 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         String str = traitementTeam(IdLeague,IdT);
                         System.out.println(str);
-                        //decodeTeamMatchJSON(str,root);
+                        decodeTeamMatchJSON(str,root);
                     } catch (ExecutionException e) {
                         e.printStackTrace();
                     } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
@@ -125,10 +127,12 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         String str = traitementTeam(IdLeague,IdT);
                         System.out.println(str);
-                        //decodeTeamMatchJSON(str,root);
+                        decodeTeamMatchJSON(str,root);
                     } catch (ExecutionException e) {
                         e.printStackTrace();
                     } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
@@ -137,10 +141,12 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         String str = traitementTeam(IdLeague,IdT);
                         System.out.println(str);
-                        //decodeTeamMatchJSON(str,root);
+                        decodeTeamMatchJSON(str,root);
                     } catch (ExecutionException e) {
                         e.printStackTrace();
                     } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
@@ -149,10 +155,12 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         String str = traitementTeam(IdLeague,IdT);
                         System.out.println(str);
-                        //decodeTeamMatchJSON(str,root);
+                        decodeTeamMatchJSON(str,root);
                     } catch (ExecutionException e) {
                         e.printStackTrace();
                     } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
@@ -209,10 +217,72 @@ public class MainActivity extends AppCompatActivity {
     public void decodeTeamMatchJSON(String str, View root) throws JSONException {
 
 
-        // Ici décoder les infos de l'équipe
+// Ici décoder les infos de l'équipe
         JSONObject obj = new JSONObject(str);
-        JSONArray step1 = obj.getJSONArray("response");
+        JSONObject step1 = obj.getJSONObject("response");
+        JSONObject step2 = step1.getJSONObject("league");
 
+        String name_ligue = step2.getString("name");
+        System.out.println(name_ligue);
+        String country_ligue = step2.getString("country");
+        System.out.println(country_ligue);
+        String logo_ligue = step2.getString("logo");
+        System.out.println(logo_ligue);
+        String flag_ligue = step2.getString("flag");
+        System.out.println(flag_ligue);
+        String season_ligue = step2.getString("season");
+        System.out.println(season_ligue);
+
+        JSONObject step3 = step1.getJSONObject("team");
+
+        String name_team = step3.getString("name");
+        System.out.println(name_team);
+        String logo_team = step3.getString("logo");
+        System.out.println(logo_team);
+        String histo_form = step1.getString("form");
+        System.out.println(histo_form);
+
+        JSONObject step4 = step1.getJSONObject("fixtures");
+        JSONObject step5 = step4.getJSONObject("played");
+
+        String home_played = step5.getString("home");
+        System.out.println(home_played);
+        String away_played = step5.getString("away");
+        System.out.println(away_played);
+        String total_played = step5.getString("total");
+        System.out.println(total_played);
+
+        JSONObject step6 = step4.getJSONObject("wins");
+        JSONObject step7 = step4.getJSONObject("draws");
+        JSONObject step8 = step4.getJSONObject("loses");
+
+        String victoires = step6.getString("total");
+        System.out.println(victoires);
+        String nul = step7.getString("total");
+        System.out.println(nul);
+        String defaites = step8.getString("total");
+        System.out.println(defaites);
+
+        JSONObject step9 = step1.getJSONObject("goals");
+        JSONObject step10 = step9.getJSONObject("for");
+        JSONObject step11 = step10.getJSONObject("total");
+
+        String home_but = step11.getString("home");
+        System.out.println(home_but);
+        String away_but = step11.getString("away");
+        System.out.println(away_but);
+        String total_but = step11.getString("total");
+        System.out.println(total_but);
+
+        JSONObject step12 = step9.getJSONObject("against");
+        JSONObject step13 = step12.getJSONObject("total");
+
+        String home_but_encaisse = step13.getString("home");
+        System.out.println(home_but_encaisse);
+        String away_but_encaisse = step13.getString("away");
+        System.out.println(away_but_encaisse);
+        String total_but_encaisse = step13.getString("total");
+        System.out.println(total_but_encaisse);
 
     }
 

@@ -1,9 +1,13 @@
 package com.example.footx;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.transition.Visibility;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,6 +37,17 @@ public class ConnexionActivity extends AppCompatActivity {
 
         binding = ActivityConnexionBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+
+        // Vérification mode avion au lancement de la page connexion
+        ModeAvionActivity mode_avion = new ModeAvionActivity();
+        if(ModeAvionON(this)) {
+            Toast.makeText(this, "Le mode avion est activé ! Désactivez-le pour continuer", Toast.LENGTH_SHORT).show();
+        }
+        IntentFilter intentFilter = new IntentFilter("android.intent.action.AIRPLANE_MODE");
+        this.registerReceiver(mode_avion,intentFilter);
+
+
         this.pseudo = (EditText) this.findViewById(R.id.editText_pseudo);
         this.mdp = (EditText) this.findViewById(R.id.editText_mdp);
 
@@ -74,7 +89,8 @@ public class ConnexionActivity extends AppCompatActivity {
         });
     }
 
-
-
-
+    // Méthode mode avion
+    private static boolean ModeAvionON(Context context) {
+        return Settings.System.getInt(context.getContentResolver(),Settings.Global.AIRPLANE_MODE_ON,0)!=0;
+    }
 }
