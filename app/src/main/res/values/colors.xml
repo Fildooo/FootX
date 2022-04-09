@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="jaune">#f5cc23</color>
-    <color name="rouge">#de0e10</color>
-    <color name="bleu">#000000</color>
     <color name="bleu_1">#0A207E</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
