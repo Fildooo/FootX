@@ -76,7 +76,6 @@ public class InscriptionActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        System.out.println(Team);
 
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(),
@@ -101,7 +100,6 @@ public class InscriptionActivity extends AppCompatActivity {
                             String m = mdp.getText().toString();
                             String IdT = TeamID.get(i).toString();
                             db.insertUser(p,m,IdT);
-                            System.out.println(IdT);
                         }
                     }
                 }else {

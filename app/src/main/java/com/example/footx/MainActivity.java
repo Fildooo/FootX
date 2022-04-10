@@ -105,7 +105,6 @@ public class MainActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        System.out.println(TeamID);
 
 
         int i=0;
@@ -118,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
                     IdLeague = "61";
                     try {
                         String str = traitementTeam(IdLeague,IdT);
-                        System.out.println(str);
                         decodeTeamMatchJSON(str,root);
                     } catch (ExecutionException e) {
                         e.printStackTrace();
@@ -130,7 +128,6 @@ public class MainActivity extends AppCompatActivity {
                     IdLeague = "39";
                     try {
                         String str = traitementTeam(IdLeague,IdT);
-                        System.out.println(str);
                         decodeTeamMatchJSON(str,root);
                     } catch (ExecutionException e) {
                         e.printStackTrace();
@@ -144,7 +141,6 @@ public class MainActivity extends AppCompatActivity {
                     IdLeague = "140";
                     try {
                         String str = traitementTeam(IdLeague,IdT);
-                        System.out.println(str);
                         decodeTeamMatchJSON(str,root);
                     } catch (ExecutionException e) {
                         e.printStackTrace();
@@ -158,7 +154,6 @@ public class MainActivity extends AppCompatActivity {
                     IdLeague = "78";
                     try {
                         String str = traitementTeam(IdLeague,IdT);
-                        System.out.println(str);
                         decodeTeamMatchJSON(str,root);
                     } catch (ExecutionException e) {
                         e.printStackTrace();
@@ -172,7 +167,6 @@ public class MainActivity extends AppCompatActivity {
                     IdLeague = "135";
                     try {
                         String str = traitementTeam(IdLeague,IdT);
-                        System.out.println(str);
                         decodeTeamMatchJSON(str,root);
                     } catch (ExecutionException e) {
                         e.printStackTrace();
@@ -536,7 +530,6 @@ public class MainActivity extends AppCompatActivity {
             connection = (HttpsURLConnection) url.openConnection();
             connection.setDoOutput(true);
             connection.addRequestProperty("x-apisports-key", "fb0f3952c194ffdfeb0fcdd8ba320399");
-            System.out.println(connection.getResponseCode());
             InputStream inputStream = connection.getInputStream();
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -590,7 +583,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(String result) {
-            System.out.println("response : "+result);
         }
     }
 

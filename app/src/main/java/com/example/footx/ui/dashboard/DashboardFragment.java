@@ -330,8 +330,6 @@ public class DashboardFragment extends Fragment {
             String bc = step8.getString("against");
 
 
-            System.out.println(rank + " " + team_logo + " " + team_name + " " + j + " " + g + " " + n + " " + p + " " + bp + " " + bc + " " + goalsDiff +
-                    " " + points);
 
 
             final String col1 = rank;
@@ -476,7 +474,6 @@ public class DashboardFragment extends Fragment {
             connection = (HttpsURLConnection) url.openConnection();
             connection.setDoOutput(true);
             connection.addRequestProperty("x-apisports-key", "fb0f3952c194ffdfeb0fcdd8ba320399");
-            System.out.println(connection.getResponseCode());
             InputStream inputStream = connection.getInputStream();
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -513,7 +510,6 @@ public class DashboardFragment extends Fragment {
         }
 
         protected void onPostExecute(String result) {
-            System.out.println("response : "+result);
         }
     }
 

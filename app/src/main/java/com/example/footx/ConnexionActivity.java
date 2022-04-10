@@ -84,8 +84,6 @@ public class ConnexionActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Boolean validUser = db.checkLogin(pseudo.getText().toString(), mdp.getText().toString());
                 if(validUser == true) {
-                    System.out.println(db.recupEquipe(pseudo.getText().toString()));
-
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     intent.putExtra("pseudo", pseudo.getText().toString());
                     intent.putExtra("teamid", db.recupEquipe(pseudo.getText().toString()));
@@ -106,7 +104,6 @@ public class ConnexionActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), InscriptionActivity.class);
                 startActivity(intent);
                 finish();
-                System.out.println("test pas encore de comtpe bv");
             }
         });
     }

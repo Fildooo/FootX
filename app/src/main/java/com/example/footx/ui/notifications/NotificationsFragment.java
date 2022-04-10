@@ -232,7 +232,6 @@ public class NotificationsFragment extends Fragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        System.out.println(Team);
 
         LayoutInflater inflator = (LayoutInflater) getActivity().getBaseContext()
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -253,7 +252,6 @@ public class NotificationsFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                // System.out.println(editQuest.getText().toString());
                 int i=0;
                 for(i=0;i<Team.size();i++){
                     if(Team.get(i).equals(editQuest.getText().toString())) {
@@ -343,7 +341,6 @@ public class NotificationsFragment extends Fragment {
             connection = (HttpsURLConnection) url.openConnection();
             connection.setDoOutput(true);
             connection.addRequestProperty("x-apisports-key", "fb0f3952c194ffdfeb0fcdd8ba320399");
-            System.out.println(connection.getResponseCode());
             InputStream inputStream = connection.getInputStream();
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -622,7 +619,6 @@ public class NotificationsFragment extends Fragment {
                 final String stade = stade_name;
                 final String nulll = "    ";
 
-                System.out.println(col2);
 
                 row = new TableRow(getActivity().getBaseContext());
 
@@ -839,7 +835,6 @@ public class NotificationsFragment extends Fragment {
         }
 
         protected void onPostExecute(String result) {
-            System.out.println("response : "+result);
         }
     }
 
