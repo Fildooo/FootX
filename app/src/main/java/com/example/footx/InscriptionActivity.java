@@ -80,7 +80,7 @@ public class InscriptionActivity extends AppCompatActivity {
 
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(),
-                android.R.layout.simple_dropdown_item_1line, Team);
+                R.layout.custom_autocomplete, Team);
         AutoCompleteTextView textView = (AutoCompleteTextView) findViewById(R.id.autocompletev);
         textView.setAdapter(adapter);
 
