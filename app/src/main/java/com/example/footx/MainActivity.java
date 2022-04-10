@@ -364,79 +364,79 @@ public class MainActivity extends AppCompatActivity {
         row132 = new TableRow(getBaseContext());
 
         tv12 = new TextView(getBaseContext());
-        tv12.setText("5 derniers matchs : "+histo_form.substring(0,5));
+        tv12.setText("    5 derniers matchs : "+histo_form.substring(0,5));
         tv12.setTextColor(Color.WHITE);
 
         tv12.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
 
         tv22 = new TextView(getBaseContext());
-        tv22.setText("Matchs à domicile : "+home_played);
+        tv22.setText("    Matchs à domicile : "+home_played);
         tv22.setTextColor(Color.WHITE);
 
         tv22.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
         tv32 = new TextView(getBaseContext());
-        tv32.setText("Matchs à l'éxterieur : "+away_played);
+        tv32.setText("    Matchs à l'éxterieur : "+away_played);
         tv32.setTextColor(Color.WHITE);
 
         tv32.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
         tv42 = new TextView(getBaseContext());
-        tv42.setText("Matchs totaux : "+total_played);
+        tv42.setText("    Matchs totaux : "+total_played);
         tv42.setTextColor(Color.WHITE);
 
         tv42.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
         tv52 = new TextView(getBaseContext());
-        tv52.setText("Buts à domicile : "+home_but);
+        tv52.setText("    Buts à domicile : "+home_but);
         tv52.setTextColor(Color.WHITE);
 
         tv52.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
         tv62 = new TextView(getBaseContext());
-        tv62.setText("Buts à l'éxterieur : "+away_but);
+        tv62.setText("    Buts à l'éxterieur : "+away_but);
         tv62.setTextColor(Color.WHITE);
 
         tv62.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
         tv72 = new TextView(getBaseContext());
-        tv72.setText("Buts totaux : "+total_but);
+        tv72.setText("    Buts totaux : "+total_but);
         tv72.setTextColor(Color.WHITE);
 
         tv72.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
         tv82 = new TextView(getBaseContext());
-        tv82.setText("Victoires : "+victoires);
+        tv82.setText("    Victoires : "+victoires);
         tv82.setTextColor(Color.WHITE);
 
         tv82.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
         tv92 = new TextView(getBaseContext());
-        tv92.setText("Défaites : "+defaites);
+        tv92.setText("    Défaites : "+defaites);
         tv92.setTextColor(Color.WHITE);
         tv92.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
         tv102 = new TextView(getBaseContext());
-        tv102.setText("Nuls : "+nul);
+        tv102.setText("    Nuls : "+nul);
         tv102.setTextColor(Color.WHITE);
 
         tv102.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
         tv112 = new TextView(getBaseContext());
-        tv112.setText("Encaissés à domicile : "+home_but_encaisse);
+        tv112.setText("    Encaissés à domicile : "+home_but_encaisse);
         tv112.setTextColor(Color.WHITE);
 
         tv112.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
         tv122 = new TextView(getBaseContext());
-        tv122.setText("Encaissés à l'éxterieur : "+away_but_encaisse);
+        tv122.setText("    Encaissés à l'éxterieur : "+away_but_encaisse);
         tv122.setTextColor(Color.WHITE);
 
         tv122.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
         tv132 = new TextView(getBaseContext());
-        tv132.setText("Encaissés totaux : "+total_but_encaisse);
+        tv132.setText("    Encaissés totaux : "+total_but_encaisse);
         tv132.setTextColor(Color.WHITE);
 
         tv132.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
