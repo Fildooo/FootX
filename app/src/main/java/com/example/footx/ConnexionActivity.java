@@ -28,8 +28,27 @@ public class ConnexionActivity extends AppCompatActivity {
     private Button inscrirepc;
     private TextView error_msg;
 
+    private static String Stringpseudo;
+
+    public String getStringpseudo() {
+        return Stringpseudo;
+    }
+
+    public String getStringteamid() {
+        return Stringteamid;
+    }
+
+    private static String Stringteamid;
     DBHandler db;
 
+
+    public void setStringpseudo(String stringpseudo) {
+        Stringpseudo = stringpseudo;
+    }
+
+    public void setStringteamid(String stringteamid) {
+        Stringteamid = stringteamid;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +78,7 @@ public class ConnexionActivity extends AppCompatActivity {
         db = new DBHandler(this);
 
 
+
         this.connect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,6 +89,8 @@ public class ConnexionActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     intent.putExtra("pseudo", pseudo.getText().toString());
                     intent.putExtra("teamid", db.recupEquipe(pseudo.getText().toString()));
+                    setStringpseudo(pseudo.getText().toString());
+                    setStringteamid(db.recupEquipe(pseudo.getText().toString()));
                     startActivity(intent);
                     finish();
                 }else {

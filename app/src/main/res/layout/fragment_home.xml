@@ -5,183 +5,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-        <TextView
-            android:id="@+id/infosuser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ffffff"
-            android:textSize="20sp"
-            android:padding="10dp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/background_row">
-
-    <ImageView
-        android:id="@+id/imageview"
+    <TextView
+        android:id="@+id/infosuser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        ></ImageView>
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:padding="10dp"/>
 
-        <TextView
-            android:id="@+id/equipepref"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ffffff"
-            android:textSize="20sp"
-            android:layout_gravity="center"
-            android:padding="10dp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TableLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:stretchColumns="0"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center">
+        android:id="@+id/idEquipe"
+        android:paddingBottom="50dp"
+        >
+    </TableLayout>
 
-        <TextView
-            android:id="@+id/ligue"
-            android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <TableLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:stretchColumns="0"
             android:layout_height="wrap_content"
-            android:textColor="#ffffff"
-            android:layout_marginLeft="100dp"
-            android:textSize="15sp"
-            android:padding="5dp"
-            android:layout_gravity="center"
+            android:id="@+id/stats"
+            android:paddingBottom="50dp"
+            >
 
-            />
+        </TableLayout>
+    </ScrollView>
 
-        <ImageView
-            android:id="@+id/imageview3"
-            android:layout_width="20dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            ></ImageView>
-
-
-
-        </LinearLayout>
-    </LinearLayout>
-
-
-        <TextView
-            android:id="@+id/form"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ffffff"
-            android:textSize="10sp"
-            android:padding="5dp"
-            />
-
-        <TextView
-            android:id="@+id/mj1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ffffff"
-            android:textSize="10sp"
-            android:padding="5dp"
-            />
-
-        <TextView
-            android:id="@+id/mj2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ffffff"
-            android:textSize="10sp"
-            android:padding="5dp"
-            />
-
-        <TextView
-            android:id="@+id/mj3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ffffff"
-            android:textSize="10sp"
-            android:padding="5dp"
-            />
-
-        <TextView
-            android:id="@+id/mscore1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ffffff"
-            android:textSize="10sp"
-            android:padding="5dp"
-            />
-
-        <TextView
-            android:id="@+id/mscore2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ffffff"
-            android:textSize="10sp"
-            android:padding="5dp"
-            />
-
-        <TextView
-            android:id="@+id/mscore3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ffffff"
-            android:textSize="10sp"
-            android:padding="5dp"
-            />
-
-        <TextView
-            android:id="@+id/bp1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ffffff"
-            android:textSize="10sp"
-            android:padding="5dp"
-            />
-
-        <TextView
-            android:id="@+id/bp2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ffffff"
-            android:textSize="10sp"
-            android:padding="5dp"
-            />
-
-        <TextView
-            android:id="@+id/bp3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ffffff"
-            android:textSize="10sp"
-            android:padding="5dp"
-            />
-
-        <TextView
-            android:id="@+id/bc1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ffffff"
-            android:textSize="10sp"
-            android:padding="5dp"
-            />
-
-        <TextView
-            android:id="@+id/bc2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ffffff"
-            android:textSize="10sp"
-            android:padding="5dp"
-            />
-
-        <TextView
-            android:id="@+id/bc3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ffffff"
-            android:textSize="10sp"
-            android:padding="5dp"
-            />
 
 
 </LinearLayout>
