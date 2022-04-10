@@ -9,6 +9,7 @@
     <string name="ButtonQuestion">Valider</string>
     <string name="prochain">Prochain match : </string>
     <string name="Listmatch">Historique des matchs : </string>
+    <string name="HomeText">Infos sur ton équipe favorite : </string>
     <string-array name="classement_array">
         <item>Ligue 1</item>
         <item>Premier League</item>

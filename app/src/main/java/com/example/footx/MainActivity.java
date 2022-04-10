@@ -291,7 +291,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         TableLayout table = (TableLayout) root.findViewById(R.id.idEquipe);
-        TableRow row1, row2, row3;
+        TableRow row1, row2, row3, row4;
 
         row1 = new TableRow(getBaseContext());
 
@@ -299,7 +299,7 @@ public class MainActivity extends AppCompatActivity {
 
         row3 = new TableRow(getBaseContext());
 
-
+        row4 = new TableRow(getBaseContext());
 
         iv1 = new ImageView(getBaseContext());
         Picasso.get().load(logo_team).into(iv1);
@@ -309,18 +309,21 @@ public class MainActivity extends AppCompatActivity {
         tv1.setText(name_team);
         tv1.setTextColor(Color.WHITE);
         tv1.setGravity(Gravity.CENTER);
+        tv1.setTypeface(Typeface.DEFAULT_BOLD);
         tv1.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
         tv2 = new TextView(getBaseContext());
         tv2.setText(name_ligue);
         tv2.setTextColor(Color.WHITE);
         tv2.setGravity(Gravity.CENTER);
+        tv2.setTypeface(Typeface.DEFAULT_BOLD);
         tv2.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
         iv2 = new ImageView(getBaseContext());
         Picasso.get().load(logo_ligue).into(iv2);
-        iv2.setLayoutParams(new TableRow.LayoutParams(0, android.view.ViewGroup.LayoutParams.MATCH_PARENT, 1));
-
+        TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(80,80,1);
+        layoutParams.gravity=Gravity.CENTER;
+        iv2.setLayoutParams(layoutParams);
         if (iv1.getParent() != null) {
             ((ViewGroup) iv1.getParent()).removeView(iv1); // <- fix
         }
@@ -336,11 +339,12 @@ public class MainActivity extends AppCompatActivity {
         if (iv2.getParent() != null) {
             ((ViewGroup) iv2.getParent()).removeView(iv2); // <- fix
         }
-        row3.addView(iv2);
+        row4.addView(iv2);
 
         table.addView(row1);
         table.addView(row2);
         table.addView(row3);
+        table.addView(row4);
 
         TableLayout table2 = (TableLayout) root.findViewById(R.id.stats);
         TableRow row12, row22, row32, row42, row52, row62, row72, row82, row92, row102, row112, row122, row132;
@@ -360,82 +364,81 @@ public class MainActivity extends AppCompatActivity {
         row132 = new TableRow(getBaseContext());
 
         tv12 = new TextView(getBaseContext());
-        tv12.setText(histo_form.substring(0,5));
+        tv12.setText("5 derniers matchs : "+histo_form.substring(0,5));
         tv12.setTextColor(Color.WHITE);
-        tv12.setGravity(Gravity.CENTER);
+
         tv12.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
 
         tv22 = new TextView(getBaseContext());
-        tv22.setText("Matchs à domicile "+home_played);
+        tv22.setText("Matchs à domicile : "+home_played);
         tv22.setTextColor(Color.WHITE);
-        tv22.setGravity(Gravity.CENTER);
+
         tv22.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
         tv32 = new TextView(getBaseContext());
-        tv32.setText("Matchs à l'éxterieur "+away_played);
+        tv32.setText("Matchs à l'éxterieur : "+away_played);
         tv32.setTextColor(Color.WHITE);
-        tv32.setGravity(Gravity.CENTER);
+
         tv32.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
         tv42 = new TextView(getBaseContext());
-        tv42.setText("Matchs totaux "+total_played);
+        tv42.setText("Matchs totaux : "+total_played);
         tv42.setTextColor(Color.WHITE);
-        tv42.setGravity(Gravity.CENTER);
+
         tv42.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
         tv52 = new TextView(getBaseContext());
-        tv52.setText("Buts à domicile "+home_but);
+        tv52.setText("Buts à domicile : "+home_but);
         tv52.setTextColor(Color.WHITE);
-        tv52.setGravity(Gravity.CENTER);
+
         tv52.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
         tv62 = new TextView(getBaseContext());
-        tv62.setText("Buts à l'éxterieur "+away_but);
+        tv62.setText("Buts à l'éxterieur : "+away_but);
         tv62.setTextColor(Color.WHITE);
-        tv62.setGravity(Gravity.CENTER);
+
         tv62.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
         tv72 = new TextView(getBaseContext());
-        tv72.setText("Buts totaux "+total_but);
+        tv72.setText("Buts totaux : "+total_but);
         tv72.setTextColor(Color.WHITE);
-        tv72.setGravity(Gravity.CENTER);
+
         tv72.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
         tv82 = new TextView(getBaseContext());
-        tv82.setText("Victoires "+victoires);
+        tv82.setText("Victoires : "+victoires);
         tv82.setTextColor(Color.WHITE);
-        tv82.setGravity(Gravity.CENTER);
+
         tv82.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
         tv92 = new TextView(getBaseContext());
-        tv92.setText("Défaites "+defaites);
+        tv92.setText("Défaites : "+defaites);
         tv92.setTextColor(Color.WHITE);
-        tv92.setGravity(Gravity.CENTER);
         tv92.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
         tv102 = new TextView(getBaseContext());
-        tv102.setText("Nuls "+nul);
+        tv102.setText("Nuls : "+nul);
         tv102.setTextColor(Color.WHITE);
-        tv102.setGravity(Gravity.CENTER);
+
         tv102.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
         tv112 = new TextView(getBaseContext());
-        tv112.setText("Encaissés à domicile "+home_but_encaisse);
+        tv112.setText("Encaissés à domicile : "+home_but_encaisse);
         tv112.setTextColor(Color.WHITE);
-        tv112.setGravity(Gravity.CENTER);
+
         tv112.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
         tv122 = new TextView(getBaseContext());
-        tv122.setText("Encaissés à l'éxterieur "+away_but_encaisse);
+        tv122.setText("Encaissés à l'éxterieur : "+away_but_encaisse);
         tv122.setTextColor(Color.WHITE);
-        tv122.setGravity(Gravity.CENTER);
+
         tv122.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
         tv132 = new TextView(getBaseContext());
-        tv132.setText("Encaissés totaux "+total_but_encaisse);
+        tv132.setText("Encaissés totaux : "+total_but_encaisse);
         tv132.setTextColor(Color.WHITE);
-        tv132.setGravity(Gravity.CENTER);
+
         tv132.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
 
         if (tv12.getParent() != null) {
